@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Sankey diagram</title>
+	<script src="utils.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	</link>
+</head>
+
+<body>
+	<div class="canvas-holder">
+		<canvas id="chart-area"></canvas>
+	</div>
+
+	<script>
+		Utils.load(() => {
+		var ctx = document.getElementById('chart-area').getContext('2d');
+
+		var colors = {
+			Savings: '#FF9500', // previous fee9b1 bc5090
+			Debt: '#FF640A', // previous f7987b
+			Expenses: '#FF7F0F', // previous fdc690 
+			Salary: '#0E489E', // previous: 7c9eca
+			Investments: '#9dc5de',
+			Hustle: '#c4e4ef',
+		};
+
+		// the y-order of nodes, smaller = higher
+		var priority = {
+			Oil: 1,
+			'Narural Gas': 2,
+			Coal: 3,
+			'Fossil Fuels': 1,
+			Electricity: 2,
+			Energy: 1,
+		};
+
+		var labels = {
+			Oil: 'black gold (label changed)',
+		};
+
+			function getColor(name) {
+				return colors[name] || 'green';
+			}
+
+			// Income 5000
+			// Expenses 2000
+			// Debt 2000
+			// Savings 1000
+
+			Chart.defaults.font.family = '"Lato", sans-serif';
+			Chart.defaults.font.size = '16px';
+			Chart.defaults.font.weight = '600';
+
+			var chart = new Chart(ctx, {
+				type: 'sankey',
+				data: {
+					datasets: [
+						{
+							color: '#fff',
+							data: [
+								// { from: 'Hustle', to: 'Income', flow: 400 },
+								// { from: 'Investments', to: 'Income', flow: 1000 },
+								// { from: 'Gift', to: 'Income', flow: 500 },
+								{ from: 'Salary', to: 'Income', flow: 5000 },
+								{ from: 'Income', to: 'Savings', flow: 500 },
+								{ from: 'Income', to: 'Expenses', flow: 3500 },
+								{ from: 'Income', to: 'Debt', flow: 1000 },
+							],
+							priority,
+							labels,
+							borderWidth: 0,
+							nodeWidth: -1,
+							colorFrom: (c) => {
+								if (c.dataIndex < 1) {
+									return getColor(c.dataset.data[c.dataIndex].from);
+								} else {
+									return getColor(c.dataset.data[c.dataIndex].to);
+								}
+							},
+							colorTo: (c) => {
+								if (c.dataIndex < 1) {
+									return getColor(c.dataset.data[c.dataIndex].from);
+								} else {
+									return getColor(c.dataset.data[c.dataIndex].to);
+								}
+							},
+						},
+					],
+				},
+			});
+		});
+	</script>
+</body>
+
+</html>
