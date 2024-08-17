@@ -1,7 +1,7 @@
 {
-  "name": "chartjs-chart-sankey",
-  "version": "0.12.1",
-  "description": "Chart.js module for creating sankey diagrams",
+  "name": "@nikelaz/bw-sankey-charts",
+  "version": "0.0.1",
+  "description": "",
   "main": "dist/chartjs-chart-sankey.js",
   "module": "dist/chartjs-chart-sankey.esm.js",
   "types": "types/index.esm.d.ts",
@@ -13,17 +13,12 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "autobuild": "rollup -c -w",
+    "autobuild": "rollup -c -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kurkle/chartjs-chart-sankey.git"
+    "url": "git+https://github.com/nikelaz/bw-sankey-charts"
   },
-  "keywords": [
-    "chart.js",
-    "chart",
-    "sankey"
-  ],
   "files": [
     "dist/*.js",
     "types/index.esm.d.ts"
@@ -31,9 +26,9 @@
   "author": "Jukka Kurkela",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kurkle/chartjs-chart-sankey/issues"
+    "url": "https://github.com/nikelaz/bw-sankey-charts/issues"
   },
-  "homepage": "https://github.com/kurkle/chartjs-chart-sankey#readme",
+  "homepage": "https://github.com/nikelaz/bw-sankey-charts",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
