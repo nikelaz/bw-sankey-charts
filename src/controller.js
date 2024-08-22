@@ -195,6 +195,7 @@ export default class SankeyController extends DatasetController {
     ctx.save();
     const chartArea = this.chart.chartArea;
     for (const node of nodes.values()) {
+      let isSmaller = false;
       const x = xScale.getPixelForValue(node.x);
       const y = yScale.getPixelForValue(node.y);
 
@@ -202,9 +203,16 @@ export default class SankeyController extends DatasetController {
 
       if (max < 180) continue;
 
-      const isSmaller = max <= 220;
-
       const height = Math.abs(yScale.getPixelForValue(node.y + max) - y);
+
+      if (height < 18) {
+        continue;
+      }
+
+      if (height < 25) {
+        isSmaller = true;
+      }
+
       const label = labels && labels[node.key] || node.key;
       let textX = x;
       ctx.fillStyle = dataset.color || 'black';
@@ -234,7 +242,7 @@ export default class SankeyController extends DatasetController {
     if (isSmaller) {
       font.size = 13;
       font.lineHeight= 13;
-      font.string = "normal 600 13px \"Lato\", sans-serif"
+      font.string = `normal ${font.weight} ${font.size}px ${font.family}`
     }
 
     const lines = isNullOrUndef(label) ? [] : toTextLines(label);

@@ -49,9 +49,9 @@
 			// Debt 2000
 			// Savings 1000
 
-			Chart.defaults.font.family = '"Lato", sans-serif';
-			Chart.defaults.font.size = '16px';
-			Chart.defaults.font.weight = '600';
+			Chart.defaults.font.family = '"Inter", sans-serif';
+			Chart.defaults.font.size = 16;
+			Chart.defaults.font.weight = 600;
 
 			var chart = new Chart(ctx, {
 				type: 'sankey',
@@ -63,7 +63,7 @@
 								// { from: 'Hustle', to: 'Income', flow: 400 },
 								// { from: 'Investments', to: 'Income', flow: 1000 },
 								// { from: 'Gift', to: 'Income', flow: 500 },
-								{ from: 'Salary', to: 'Income', flow: 5000 },
+								{ from: 'Salary', to: 'Income', flow: 350 },
 								{ from: 'Income', to: 'Savings', flow: 500 },
 								{ from: 'Income', to: 'Expenses', flow: 3500 },
 								{ from: 'Income', to: 'Debt', flow: 1000 },
@@ -71,6 +71,10 @@
 							priority,
 							labels,
 							borderWidth: 0,
+							responsive: true,
+							options: {
+								responsive: true,
+							},
 							nodeWidth: -1,
 							colorFrom: (c) => {
 								if (c.dataIndex < 1) {
