@@ -1,6 +1,6 @@
 {
   "name": "@nikelaz/bw-sankey-charts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/chartjs-chart-sankey.js",
   "module": "dist/chartjs-chart-sankey.esm.js",
